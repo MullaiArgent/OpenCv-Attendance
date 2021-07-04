@@ -1,20 +1,23 @@
 import cv2
 import face_recognition
 
-imgMullai = face_recognition.load_image_file("TestImages/test1.jpg")
-imgMullai = cv2.cvtColor(imgMullai, cv2.COLOR_BGR2RGB)
+imgMullai_f = face_recognition.load_image_file("TestImages/mullai_f.jpg")
+imgMullai_f = cv2.cvtColor(imgMullai_f, cv2.COLOR_BGR2RGB)
+facelocMullai = face_recognition.face_locations(imgMullai_f)[0]
+encodMullai_f = face_recognition.face_encodings(imgMullai_f)[0]
+cv2.rectangle(imgMullai_f, (facelocMullai[3], facelocMullai[0]), (facelocMullai[1], facelocMullai[2]), (0, 0, 0, 255), 3)
 
+imgMullai_t = face_recognition.load_image_file("TestImages/mullai_t.jpg")
+imgMullai_t = cv2.cvtColor(imgMullai_t, cv2.COLOR_BGR2RGB)
+facelocmullai_t = face_recognition.face_locations(imgMullai_t)[0]
+encodMullai_t = face_recognition.face_encodings(imgMullai_t)[0]
+cv2.rectangle(imgMullai_t, (facelocmullai_t[3], facelocmullai_t[0]), (facelocmullai_t[1], facelocmullai_t[2]), (0, 0, 0, 255), 3)
 
-facelocMullai = face_recognition.face_locations(imgMullai)[0]
-encodMullai = face_recognition.face_encodings(imgMullai)[0]
-cv2.rectangle(imgMullai, (facelocMullai[3], facelocMullai[0]), (facelocMullai[1], facelocMullai[2]), (0, 0, 0, 255), 3)
-cv2.imshow("Mullai Rajan", imgMullai)
-imgHari = face_recognition.load_image_file("TestImages/test.jpg")
-imgHari = cv2.cvtColor(imgHari, cv2.COLOR_BGR2RGB)
+results = face_recognition.compare_faces([encodMullai_f],encodMullai_t)
+facedis = face_recognition.face_distance([encodMullai_f],encodMullai_t)
 
+cv2.putText(imgMullai_t,f'{results},{round(facedis[0],2)}',(100,100),cv2.FONT_HERSHEY_COMPLEX_SMALL,1,(0,0,255),2)
 
-facelocHari = face_recognition.face_locations(imgHari)[0]
-encodHari = face_recognition.face_encodings(imgHari)[0]
-cv2.rectangle(imgHari, (facelocHari[3], facelocHari[0]), (facelocHari[1], facelocHari[2]), (0, 0, 0, 255), 3)
-cv2.imshow("Hari", imgHari)
+cv2.imshow("Mullai Rajan f", imgMullai_f)
+cv2.imshow("Mullai Rajan t", imgMullai_t)
 cv2.waitKey(0)
