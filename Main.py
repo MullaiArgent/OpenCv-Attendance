@@ -20,7 +20,16 @@ def findencodings(images):
         img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
         encode = face_recognition.face_encodings(img) [0]
         encodelist.append(encode)
+    print("Encoding Completed")
     return encodelist
 
 
-print(findencodings(images))
+encodelist = findencodings(images)
+
+
+cap  = cv2.VideoCapture(0)
+
+while(True):
+    success, img = cap.read()
+
+
