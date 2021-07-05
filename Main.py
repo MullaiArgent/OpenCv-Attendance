@@ -8,12 +8,15 @@ images = []
 images_name = []
 
 mylist = os.listdir(path)
-
+print("Path added.. Successfully")
+counter = 0
 for a in mylist:
     curimg = cv2.imread(f'{path}/{a}')
     images.append(curimg)
     images_name.append(os.path.splitext(a)[0])
-
+    counter += 1
+    print(counter,"files added...")
+print("Totaly ,"counter,"Files found")
 
 def findencodings(a):
     encodelist = []
@@ -26,7 +29,7 @@ def findencodings(a):
 
 
 encodelist = findencodings(images)
-
+print("Initiating WebCam...")
 cap = cv2.VideoCapture(0)
 
 while True:
@@ -45,3 +48,4 @@ while True:
         if matchs[matchIndex]:
             name = images_name[matchIndex].upper()
             print(name)
+
