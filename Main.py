@@ -57,4 +57,6 @@ while True:
 
         if matchs[matchindex]:
             name = ImgNames[matchindex].upper()
-            print(name,matchindex)
+            print(name)
+    cv2.imshow("wc",img)
+    cv2.waitKey(1)
