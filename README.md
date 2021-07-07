@@ -11,6 +11,9 @@ Required dependancies for the Program to Run.
           1.  Desktop Development Toolkit using C++ -  which Can be Downloaded with Visual Studio.
 
           2. dlib package -  Can be installed using pip installar. (Latest verision throws bunch errors during the runtime, recommended go with 19.18.0)
+          ```bash
+          pip install dlib==19.18.0
+          ```
 
           3. opencv package - Can be installed using pip installar.
 
