@@ -16,7 +16,7 @@ for a in mylist:
     ImgNames.append(os.path.splitext(a)[0])
     counter += 1
     print('\r', end="")
-    print(counter, "file(s) founded...", end="")
+    print(counter, "file(s) founded..", end="")
 print("Beginning Face Encoding")
 
 counter = 0
