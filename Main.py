@@ -25,7 +25,7 @@ counter = 0
 def find_encoding(a):
     encode_list = []
     for img in Imgs:
-        img = cv2.cvtColor(img, cv2.cv2.COLOR_BGR2RGB)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         encode = face_recognition.face_encodings(img)[0]
         encode_list.append(encode)
         globals()['counter'] += 1
